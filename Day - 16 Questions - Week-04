@@ -1,0 +1,42 @@
+//question-1
+#include <iostream>
+using namespace std;
+struct Node {
+    int data;
+    Node *next;
+    Node(int val) : data(val), next(nullptr) {}
+};
+void insertSorted(Node *&head, int value) {
+    Node *newNode = new Node(value);
+    if (!head || head->data >= value) {
+        newNode->next = head;
+        head = newNode;
+        return;
+    }
+    Node *current = head;
+    while (current->next && current->next->data < value) {
+        current = current->next;
+    }
+    newNode->next = current->next;
+    current->next = newNode;
+}
+void printList(Node *head) {
+    while (head) {
+        cout << head->data;
+        if (head->next) cout << "->";
+        head = head->next;
+    }
+    cout << endl;
+}
+int main() {
+    Node *head = new Node(10);
+    head->next = new Node(20);
+    head->next->next = new Node(30);
+    head->next->next->next = new Node(40);
+    cout << "Original List: ";
+    printList(head);
+    int value = 25;
+    insertSorted(head, value);
+    cout << "After Insertion: ";
+    printList(head);
+}
