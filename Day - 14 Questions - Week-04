@@ -1,0 +1,33 @@
+//question-1
+#include <iostream>
+using namespace std;
+class Car {
+public:
+    string brand, model, engine;
+    int seats;
+    void displayInfo() {
+        cout << "Brand: " << brand << ", Model: " << model << ", Engine: " << engine << ", Seats: " << seats << endl;
+    }
+};
+//question-2
+#include <iostream>
+using namespace std;
+class Rectangle {
+public:
+    int width, height;
+    Rectangle(int w, int h) : width(w), height(h) {}
+    Rectangle(const Rectangle &rect) {
+        width = rect.width;
+        height = rect.height;
+    }
+};
+
+int main() {
+    Rectangle rect1(5, 10);
+    Rectangle rect2 = rect1;
+
+    cout << "Rectangle 1: " << rect1.width << " x " << rect1.height << endl;
+    cout << "Rectangle 2: " << rect2.width << " x " << rect2.height << endl;
+
+    return 0;
+}
