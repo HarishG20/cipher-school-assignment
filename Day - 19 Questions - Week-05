@@ -1,0 +1,45 @@
+//question-1
+#include <iostream>
+#include <fstream>
+using namespace std;
+int main() {
+    ofstream outFile("details.txt");
+    if (!outFile) {
+        cout << "Error opening file for writing." << endl;
+        return 1;
+    }
+    string name = "John Doe";
+    int age = 25;
+    string address = "123 Main St, Cityville";
+    outFile << "Name: " << name << endl;
+    outFile << "Age: " << age << endl;
+    outFile << "Address: " << address << endl;
+    outFile.close();
+    ifstream inFile("details.txt");
+    if (!inFile) {
+        cout << "Error opening file for reading." << endl;
+        return 1;
+    }
+    string line;
+    while (getline(inFile, line)) {
+        cout << line << endl;
+    }
+    inFile.close();
+}
+//question-2
+#include <iostream>
+#include <fstream>
+using namespace std;
+int main() {
+    ifstream inFile("input.txt");
+    if (!inFile) {
+        cout << "Error opening file." << endl;
+        return 1;
+    }
+    string line;
+    while (getline(inFile, line)) {
+        cout << line << endl;
+    }
+    inFile.close();
+}
+
