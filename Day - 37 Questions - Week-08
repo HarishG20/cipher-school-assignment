@@ -1,0 +1,58 @@
+#include <iostream>
+#include <string>
+using namespace std;
+class Car {
+private:
+    string brand;
+    string model;
+    int year;
+    int speed;
+public:
+    Car(string b, string m, int y) : brand(b), model(m), year(y), speed(0) {}
+    string getBrand() const {
+        return brand;
+    }
+    string getModel() const {
+        return model;
+    }
+    int getYear() const {
+        return year;
+    }
+    int getSpeed() const {
+        return speed;
+    }
+    void setSpeed(int s) {
+        if (s >= 0) {
+            speed = s;
+        }
+    }
+    void increaseSpeed(int amount) {
+        speed += amount;
+    }
+    void decreaseSpeed(int amount) {
+        if (speed - amount >= 0) {
+            speed -= amount;
+        } else {
+            speed = 0;
+        }
+    }
+    void displayDetails() const {
+        cout << "Car Brand: " << brand << endl;
+        cout << "Car Model: " << model << endl;
+        cout << "Manufacturing Year: " << year << endl;
+        cout << "Current Speed: " << speed << " km/h" << endl;
+    }
+};
+int main() {
+    Car myCar("Toyota", "Corolla", 2020);
+    myCar.displayDetails();
+    myCar.increaseSpeed(50);
+    cout << "\nAfter increasing speed by 50:\n";
+    myCar.displayDetails();
+    myCar.decreaseSpeed(30);
+    cout << "\nAfter decreasing speed by 30:\n";
+    myCar.displayDetails();
+    myCar.decreaseSpeed(30);
+    cout << "\nAfter decreasing speed by 30 again:\n";
+    myCar.displayDetails();
+}
